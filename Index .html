@@ -6,66 +6,59 @@
 <title>SchoolScore Finder</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f4f6f9;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+}
 
-    header {
-        background: #1e3a8a;
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
+header {
+    background: #0f172a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-    .container {
-        padding: 20px;
-        max-width: 900px;
-        margin: auto;
-    }
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
 
-    .search-box {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-    input {
-        flex: 1;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-    }
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
 
-    button {
-        padding: 12px 20px;
-        background: #1e3a8a;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-    }
+button {
+    padding: 12px 18px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-    .school-card {
-        background: white;
-        padding: 15px;
-        margin-bottom: 15px;
-        border-radius: 12px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-    .score {
-        font-size: 18px;
-        font-weight: bold;
-        color: green;
-    }
-
-    .rank {
-        font-size: 14px;
-        color: gray;
-    }
-
+.score {
+    color: green;
+    font-weight: bold;
+}
 </style>
 </head>
 
@@ -78,52 +71,50 @@
 
 <div class="container">
 
-    <!-- SEARCH -->
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search district (e.g. Pretoria, Soweto)" />
-        <button onclick="searchSchools()">Search</button>
+        <input id="search" placeholder="Search district (e.g. Pretoria)" />
+        <button onclick="search()">Search</button>
     </div>
 
-    <!-- RESULTS -->
     <div id="results"></div>
 
 </div>
 
 <script>
 const schools = [
-    { name: "Pretoria High School", district: "Pretoria", pass: 92, rank: 1 },
-    { name: "Soweto Secondary School", district: "Soweto", pass: 85, rank: 2 },
-    { name: "Centurion Academy", district: "Pretoria", pass: 96, rank: 1 },
-    { name: "Johannesburg High", district: "Johannesburg", pass: 88, rank: 3 },
+    { name: "Pretoria High School", district: "Pretoria", pass: 92 },
+    { name: "Soweto Secondary", district: "Soweto", pass: 85 },
+    { name: "Centurion College", district: "Pretoria", pass: 96 },
+    { name: "Joburg High", district: "Johannesburg", pass: 88 }
 ];
 
-function displaySchools(list) {
+function show(data) {
     const results = document.getElementById("results");
     results.innerHTML = "";
 
-    list.forEach(school => {
+    data.forEach(s => {
         results.innerHTML += `
-            <div class="school-card">
-                <h3>${school.name}</h3>
-                <p class="rank">District: ${school.district} | Rank: #${school.rank}</p>
-                <p class="score">Pass Rate: ${school.pass}%</p>
+            <div class="card">
+                <h3>${s.name}</h3>
+                <p>District: ${s.district}</p>
+                <p class="score">Pass Rate: ${s.pass}%</p>
             </div>
         `;
     });
 }
 
-function searchSchools() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
+function search() {
+    const value = document.getElementById("search").value.toLowerCase();
 
-    const filtered = schools.filter(school =>
-        school.district.toLowerCase().includes(input)
+    const filtered = schools.filter(s =>
+        s.district.toLowerCase().includes(value)
     );
 
-    displaySchools(filtered);
+    show(filtered);
 }
 
-// show all on load
-displaySchools(schools);
+// load all schools first
+show(schools);
 </script>
 
 </body>
