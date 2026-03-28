@@ -1,89 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>School Finder Demo</title>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    margin: 0;
-    text-align: center;
-}
-
-header {
-    background: #1e3a8a;
-    color: white;
-    padding: 30px;
-}
-
-.container {
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    margin: 10px auto;
-    padding: 15px;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: left;
-}
-
-.score {
-    color: green;
-    font-weight: bold;
-}
-
-button {
-    padding: 10px 15px;
-    border: none;
-    background: #1e3a8a;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-</style>
+    <title>School Finder Demo</title>
 </head>
+<body style="font-family: Arial; text-align:center; background:#f4f6f9;">
 
-<body>
-
-<header>
     <h1>SchoolScore Finder</h1>
-    <p>Helping parents choose schools based on real performance — not guessing</p>
-</header>
+    <p>Find schools based on performance — no guessing</p>
 
-<div class="container">
-
-    <h2>Top Schools Preview</h2>
-
-    <div class="card">
+    <div style="background:white; margin:10px auto; padding:15px; width:300px; border-radius:10px;">
         <h3>Pretoria High School</h3>
-        <p>District: Pretoria</p>
-        <p class="score">Pass Rate: 92%</p>
+        <p>Pass Rate: <b>92%</b></p>
     </div>
 
-    <div class="card">
+    <div style="background:white; margin:10px auto; padding:15px; width:300px; border-radius:10px;">
+        <h3>Soweto Secondary</h3>
+        <p>Pass Rate: <b>85%</b></p>
+    </div>
+
+    <div style="background:white; margin:10px auto; padding:15px; width:300px; border-radius:10px;">
         <h3>Centurion College</h3>
-        <p>District: Pretoria</p>
-        <p class="score">Pass Rate: 96%</p>
+        <p>Pass Rate: <b>96%</b></p>
     </div>
-
-    <div class="card">
-        <h3>Soweto Secondary School</h3>
-        <p>District: Soweto</p>
-        <p class="score">Pass Rate: 85%</p>
-    </div>
-
-    <br>
-
-    <button onclick="alert('Next step: adding search + rankings!')">
-        Click to see future features
-    </button>
-
-</div>
 
 </body>
 </html>
