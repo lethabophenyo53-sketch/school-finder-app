@@ -1,63 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SchoolScore Finder</title>
+<meta charset="UTF-8">
+<title>School Finder Demo</title>
 
 <style>
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
     background: #f4f6f9;
-}
-
-header {
-    background: #0f172a;
-    color: white;
-    padding: 20px;
+    margin: 0;
     text-align: center;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 12px 18px;
-    border: none;
-    background: #2563eb;
+header {
+    background: #1e3a8a;
     color: white;
-    border-radius: 8px;
-    cursor: pointer;
+    padding: 30px;
+}
+
+.container {
+    padding: 20px;
 }
 
 .card {
     background: white;
+    margin: 10px auto;
     padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 12px;
+    max-width: 500px;
+    border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
 }
 
 .score {
     color: green;
     font-weight: bold;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -66,56 +52,38 @@ button {
 
 <header>
     <h1>SchoolScore Finder</h1>
-    <p>Find schools based on real performance — no guessing</p>
+    <p>Helping parents choose schools based on real performance — not guessing</p>
 </header>
 
 <div class="container">
 
-    <div class="search-box">
-        <input id="search" placeholder="Search district (e.g. Pretoria)" />
-        <button onclick="search()">Search</button>
+    <h2>Top Schools Preview</h2>
+
+    <div class="card">
+        <h3>Pretoria High School</h3>
+        <p>District: Pretoria</p>
+        <p class="score">Pass Rate: 92%</p>
     </div>
 
-    <div id="results"></div>
+    <div class="card">
+        <h3>Centurion College</h3>
+        <p>District: Pretoria</p>
+        <p class="score">Pass Rate: 96%</p>
+    </div>
+
+    <div class="card">
+        <h3>Soweto Secondary School</h3>
+        <p>District: Soweto</p>
+        <p class="score">Pass Rate: 85%</p>
+    </div>
+
+    <br>
+
+    <button onclick="alert('Next step: adding search + rankings!')">
+        Click to see future features
+    </button>
 
 </div>
-
-<script>
-const schools = [
-    { name: "Pretoria High School", district: "Pretoria", pass: 92 },
-    { name: "Soweto Secondary", district: "Soweto", pass: 85 },
-    { name: "Centurion College", district: "Pretoria", pass: 96 },
-    { name: "Joburg High", district: "Johannesburg", pass: 88 }
-];
-
-function show(data) {
-    const results = document.getElementById("results");
-    results.innerHTML = "";
-
-    data.forEach(s => {
-        results.innerHTML += `
-            <div class="card">
-                <h3>${s.name}</h3>
-                <p>District: ${s.district}</p>
-                <p class="score">Pass Rate: ${s.pass}%</p>
-            </div>
-        `;
-    });
-}
-
-function search() {
-    const value = document.getElementById("search").value.toLowerCase();
-
-    const filtered = schools.filter(s =>
-        s.district.toLowerCase().includes(value)
-    );
-
-    show(filtered);
-}
-
-// load all schools first
-show(schools);
-</script>
 
 </body>
 </html>
